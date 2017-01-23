@@ -7,6 +7,9 @@ const bodyParser = require('body-parser');
 const express_enforces_ssl = require('express-enforces-ssl'); 
 const contentLength = require('express-content-length-validator');
 
+const dotenv = require('dotenv').config();
+const db = require('./db/db.js');
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -32,5 +35,6 @@ app.get('*', (req, res) => {
 app.set('port', process.env.PORT || 8001);
 
 app.listen(app.get('port'), () => {
+  db.build_Db();
   console.log("Server is listening...");
 });
