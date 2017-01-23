@@ -1,0 +1,53 @@
+{
+  "name": "animalsaywhat",
+  "version": "1.0.0",
+  "description": "Search for an animal and get some info about them along with a video and audio. A fun, educational, app for kids.",
+  "main": "index.js",
+  "scripts": {
+    "webpack-watch": "./node_modules/webpack/bin/webpack.js -w",
+    "webpack": "./node_modules/webpack/bin/webpack.js",
+    "build": "webpack --env.dev --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SPCMorris/animalsaywhat.git"
+  },
+  "keywords": [
+    "kids",
+    "education",
+    "animals"
+  ],
+  "author": "Ryan Morris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SPCMorris/animalsaywhat/issues"
+  },
+  "homepage": "https://github.com/SPCMorris/animalsaywhat#readme",
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-1": "^6.5.0",
+    "nodemon": "^1.11.0",
+    "react-hot-loader": "^1.3.1",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "body-parser": "^1.16.0",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "express-content-length-validator": "^1.0.0",
+    "express-enforces-ssl": "^1.1.0",
+    "helmet": "^3.4.0",
+    "morgan": "^1.7.0",
+    "mysql": "^2.12.0",
+    "path": "^0.12.7",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "webpack": "^1.14.0"
+  }
+}
