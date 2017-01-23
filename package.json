@@ -43,6 +43,7 @@
     "express-content-length-validator": "^1.0.0",
     "express-enforces-ssl": "^1.1.0",
     "helmet": "^3.4.0",
+    "knex": "^0.12.6",
     "morgan": "^1.7.0",
     "mysql": "^2.12.0",
     "path": "^0.12.7",
