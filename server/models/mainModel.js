@@ -2,11 +2,10 @@ const db = require('../db/db.js');
 
 const Animal = {};
 const User = {};
-const Exports = {};
+const Models = {};
 
-Exports.Animal = Animal;
-Exports.User = User
-module.exports = Exports;
+Models.Animal = Animal;
+Models.User = User;
 
 // Create
 
@@ -60,3 +59,5 @@ User.findUser = (request) => (
 // Update
 
 // Delete
+
+module.exports = Models;

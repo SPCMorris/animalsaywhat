@@ -14,7 +14,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(morgan('combined'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Security
 const content_length = {max: 9999, status: 400, message: "Payload is too large!"};
@@ -29,12 +29,12 @@ app.use(contentLength.validateMax(content_length));
 
 //Routes
 const routes = require('./routes/routes.js');
-app.use('/search/animals', routes);
+app.use('/', routes);
 
 app.use(express.static('./client'));
 app.use(express.static(__dirname + '/../client/public'));
 
-app.get('', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.resolve('client', 'index.html'));
 });
 
