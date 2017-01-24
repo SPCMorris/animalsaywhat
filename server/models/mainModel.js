@@ -1,34 +1,41 @@
 const db = require('../db/db.js');
-const { Animal, User } = module.exports;
+
+const Animal = {};
+const User = {};
+const Exports = {};
+
+Exports.Animal = Animal;
+Exports.User = User
+module.exports = Exports;
 
 // Create
 
-Animal.createAnimal = (request) => {
-  const response = db('Animal').where({
-    name: request.name,
-    description: request.description
-  })
-  .limit(1)
-  .then( (rows) => rows )
-  .catch( (err) => err );
+Animal.createAnimal = (input) => {
+  return new Promise( (resolve, reject) => {
+    return db('Animals').insert(input)
+      .then( (result) => {
+        resolve(result);
+      })
+      .catch( (err) => (err) );
+      });
 };
 
 User.createUser = (request) => {
-  const response = db('User').where({
+  const response = db('Users').where({
     nickname: request.nickname,
     password: request.password
   })
   .limit(1)
-  .then( (rows) => rows )
-  .catch( (err) => err );
+  .then( (rows) => (rows) )
+  .catch( (err) => (err) );
 };
 
 // Read
 
 Animal.findAllAnimals = () => (
   db('Animals')
-  .then( (rows) => rows )
-  .catch( (err) => err );
+  .then( (rows) => (rows) )
+  .catch( (err) => (err) )
 );
 
 Animal.findAnimal = (request) => (
@@ -36,8 +43,8 @@ Animal.findAnimal = (request) => (
     name: request.name
   })
   .limit(1)
-  .then( (rows) => rows )
-  .catch( (err) => err );
+  .then( (rows) => (rows) )
+  .catch( (err) => (err) )
 );
 
 User.findUser = (request) => (
@@ -46,8 +53,8 @@ User.findUser = (request) => (
     password: request.password
   })
   .limit(1)
-  .then( (rows) => rows )
-  .catch( (err) => err );
+  .then( (rows) => (rows) )
+  .catch( (err) => (err) )
 );
 
 // Update
