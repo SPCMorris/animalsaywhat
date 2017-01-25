@@ -2,13 +2,14 @@ const router = require('express').Router();
 const controllers = require('../controllers/mainController.js');
 
 // Building routes array to handle all routes
-const userCtrl = controllers.UserCtrl;
-const animalCtrl = controllers.AnimalCtrl;
+const buildRoutesArr = (main_ctrl) => {
+  const allRoutes = [];
+  for(let ctrl in main_ctrl) {
+    allRoutes.push(main_ctrl[ctrl]);
+  }
 
-const allRoutes = [];
-allRoutes.push(userCtrl);
-allRoutes.push(animalCtrl);
-
+  return allRoutes;
+};
 
 // Middleware for all routes
 const routerMiddleware = (req, res, next) => {
@@ -21,7 +22,7 @@ const routerMiddleware = (req, res, next) => {
 router.use(routerMiddleware);
 
 // Routing
-allRoutes.map( (ctrl) => {
+buildRoutesArr(controllers).map( (ctrl) => {
   for (let route in ctrl) {
     router.route(route)
       .get(ctrl[route].GET)
@@ -30,6 +31,5 @@ allRoutes.map( (ctrl) => {
       .delete(ctrl[route].DELETE);
   }
 });
-
 
 module.exports = router;

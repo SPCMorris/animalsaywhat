@@ -3,7 +3,6 @@ const db = require('../db/db.js');
 const Users = module.exports;
 
 // Create
-
 Users.createUser = (request) => {
   const response = db('Users').where({
     nickname: request.nickname,
@@ -15,7 +14,6 @@ Users.createUser = (request) => {
 };
 
 // Read
-
 Users.findUser = (request) => (
   db('Users').where({
     nickname: request.nickname,

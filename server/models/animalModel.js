@@ -3,7 +3,6 @@ const db = require('../db/db.js');
 const Animals = module.exports;
 
 // Create
-
 Animals.createAnimal = (input) => {
   return new Promise( (resolve, reject) => {
     return db('Animals').insert(input)
@@ -15,7 +14,6 @@ Animals.createAnimal = (input) => {
 };
 
 // Read
-
 Animals.findAllAnimals = () => (
   db('Animals')
   .then( (rows) => (rows) )
@@ -24,12 +22,12 @@ Animals.findAllAnimals = () => (
 
 Animals.findAnimal = (request) => (
   db('Animals').where({
-    name: request.name
+    name: request
   })
-  .limit(1)
   .then( (rows) => (rows) )
   .catch( (err) => (err) )
 );
+
 
 // Update
 

@@ -14,9 +14,9 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(morgan('combined'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
-//Security
+// Security
 const content_length = {max: 9999, status: 400, message: "Payload is too large!"};
 app.use(cors());
 app.use(helmet());
@@ -27,7 +27,7 @@ app.use(helmet.frameguard());
 app.use(helmet.hidePoweredBy());
 app.use(contentLength.validateMax(content_length));
 
-//Routes
+// Routes
 const routes = require('./routes/routes.js');
 app.use('/', routes);
 
@@ -38,6 +38,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve('client', 'index.html'));
 });
 
+// Server
 app.set('port', process.env.PORT || 8001);
 
 app.listen(app.get('port'), () => {
