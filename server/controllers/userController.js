@@ -1,11 +1,23 @@
-const Models = require('../models/mainModel.js');
+const Helpers = require('../helpers.js');
+const Users = require('../models/userModel.js');
 
-const User = Models.User;
 const userRoutes = {};
 
 const GET = (req, res) => {
-  console.log('In GET in User!', req.url)
-};
+  const url = Helpers.parsedUrl(req.url);
+  console.log('In GET in User!', url)
+
+  const user = {
+    nickname: url.query,
+    password: 1234
+  }
+  
+  Users.findUser(user)
+    .then( (response) => {
+      console.log('FIND USER: ', response);
+      res.status(200).send(response);
+    })
+}
 const POST = (req, res) => {
   console.log('In PUT in User', req.url)
 };
@@ -16,7 +28,7 @@ const DELETE = (req, res) => {
   console.log('In DELETE in User', req.url)
 };
 
-userRoutes['/:type/user'] = {
+userRoutes['/user/:type?:user'] = {
   GET, 
   POST,
   PUT,

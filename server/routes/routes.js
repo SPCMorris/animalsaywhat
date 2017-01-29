@@ -1,3 +1,4 @@
+const Helpers = require('../helpers.js');
 const router = require('express').Router();
 const controllers = require('../controllers/mainController.js');
 
@@ -11,15 +12,8 @@ const buildRoutesArr = (main_ctrl) => {
   return allRoutes;
 };
 
-// Middleware for all routes
-const routerMiddleware = (req, res, next) => {
-  console.log("Request Method: ", req.method);
-  console.log("Request URL: ", req.url);
-  console.log("Request Body: ", req.body);
-  next();
-};
-
-router.use(routerMiddleware);
+// Middleware
+router.use(Helpers.routerMiddleware);
 
 // Routing
 buildRoutesArr(controllers).map( (ctrl) => {

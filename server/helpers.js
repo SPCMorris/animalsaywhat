@@ -12,7 +12,8 @@ const routerMiddleware = (req, res, next) => {
 };
 
 const Helpers = {
-  parsedUrl
+  parsedUrl,
+  routerMiddleware
 };
 
 module.exports = Helpers;

@@ -1,7 +1,6 @@
 const Helpers = require('../helpers.js');
-const Models = require('../models/mainModel.js');
+const Animals = require('../models/animalModel.js');
 
-const Animals = Models.Animals;
 const animalRoutes = {};
 
 const GET = (req, res) => {

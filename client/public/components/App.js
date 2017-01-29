@@ -1,7 +1,10 @@
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
+import { Container } from 'semantic-ui-react';
 
+import CardGrid from './CardGrid';
 import SearchBar from './SearchBar';
+
 
 class App extends Component {
   constructor(props) {
@@ -10,11 +13,12 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <SearchBar />
-      </div>
+        <CardGrid />
+      </Container>
 
-    )
+    );
   }
 }
 
