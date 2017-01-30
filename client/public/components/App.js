@@ -15,6 +15,7 @@ class App extends Component {
     return (
       <Container>
         <SearchBar />
+        <br></br>
         <CardGrid />
       </Container>
 
