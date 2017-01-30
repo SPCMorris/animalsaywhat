@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Form, Input } from 'semantic-ui-react'
+import wikiActions from '../actions/wikipedia.js';
+import { Button, Form, Input } from 'semantic-ui-react';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class SearchBar extends Component {
   handleSubmit = (e, { formData }) => {
     e.preventDefault()
     this.setState({ formData })
-    console.log(formData.search)
+    wikiActions.wikiApiCall(formData.search);
   }
 
   render() {

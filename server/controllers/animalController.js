@@ -1,5 +1,6 @@
 const Helpers = require('../helpers.js');
 const Animals = require('../models/animalModel.js');
+const wikiScrapper = require('../scrappers/wikipedia.js');
 
 const animalRoutes = {};
 
@@ -17,24 +18,34 @@ const GET = (req, res) => {
     default:
       Animals.findAnimal(url.query)
       .then( (response) => {
-        console.log(response);
+        console.log("RESPONSE WIKI: ",response);
         res.status(200).send(response);
       });
   }
 };
 
 const POST = (req, res) => {
-  console.log('In POST in Animal', req.url)
-  const animal = {
-    name: 'cat',
-    description: 'Cute!'
-  };
+  const url = Helpers.parsedUrl(req.url);
+  console.log('In POST in Animal', url)
 
-  Animals.createAnimal(animal)
-    .then( (response) => {
-      console.log(response);
-      res.status(200).send(response);
-    })
+  const dbReady = wikiScrapper.configAnimalData(url.query)
+  .then((response) => {
+      console.log('DB DATA: ', response);
+      const animal = {
+        name: 'cat',
+        description: 'Cute!'
+      };
+
+      Animals.createAnimal(animal)
+      .then( (response) => {
+        console.log(response);
+        res.status(200).send(response);
+      })
+  })
+  .catch((error) => {
+    console.log(error);
+    return error;
+  })
 };
 
 const PUT = (req, res) => {
