@@ -29,8 +29,8 @@ const POST = (req, res) => {
   console.log('In POST in Animal', url)
 
   const dbReady = wikiScrapper.configAnimalData(url.query)
-  .then((response) => {
-      console.log('DB DATA: ', response);
+  /*.then((response) => {
+      console.log('SCRAPPER WORKED WITH NO ERRORS');
       const animal = {
         name: 'cat',
         description: 'Cute!'
@@ -45,7 +45,7 @@ const POST = (req, res) => {
   .catch((error) => {
     console.log(error);
     return error;
-  })
+  })*/
 };
 
 const PUT = (req, res) => {

@@ -2,13 +2,20 @@ const reqPromise = require('request-promise');
 const cheerio = require('cheerio');
 
 const getWikiData = (url) => {
-  return reqPromise(url)
-    .then( (response) => {
-      return response;
+  let transform = (body) => {
+    return cheerio.load(body);
+  };
+
+  let options = {
+    transform: transform,
+    uri: url
+  };
+
+  reqPromise(options)
+    .then( ($) => {
+      
     })
-    .catch( (err) => {
-      return err;
-    })
+    .catch( (error) => ( error ));
 };
 
 /*
@@ -25,18 +32,28 @@ all <p>
 
 */
 
-const scrapWikiData = () => {
+const scrapWikiData = (page) => {
+  if(!page) { return null }
+  let summary, infobox;
 
+  console.log('TESTING _--------', page)
+
+  const formattedData = {
+    summary,
+    infobox
+  };
+
+  return formattedData;
 }
 
 const configAnimalData = (animal) => {
   const url = 'https://en.wikipedia.org/wiki/' + animal;
   // Get data from Wikipedia
-  const wikiData = getWikiData(url)
+  const wikiData = getWikiData(url);
   // Scrap data
+  // const scrapedHtml = scrapWikiData(wikiData);
+  // Check for audio sample in the DB
 
-  // Check for audio sample
-  
   return wikiData;
 };
 
